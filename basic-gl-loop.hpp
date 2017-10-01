@@ -24,6 +24,11 @@ namespace m4c0 {
         main();
         virtual ~main();
 
+        main(const main &) = delete;
+        main & operator=(const main &) = delete;
+        main(main &&) = delete;
+        main & operator=(main &&) = delete;
+
         virtual const char * title() = 0;
         virtual void frame();
         virtual void reshape(int w, int h);
