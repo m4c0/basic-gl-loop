@@ -10,6 +10,8 @@ namespace m4c0 {
         virtual const char * title() = 0;
         virtual void frame();
         virtual void reshape(int w, int h);
+
+        virtual void report_fps(float fps);
     };
 }
 
