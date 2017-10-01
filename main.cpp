@@ -40,6 +40,8 @@ int main(int argc, char ** argv) {
     if (!_main) throw std::runtime_error("Missing main loop provider");
 
     glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_3_2_CORE_PROFILE | GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGBA);
+    glutInitWindowSize(800, 600);
 
     glutCreateWindow(_main->title());
     glutShowWindow();
