@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-#include "basic-gl-loop.hpp"
+#include "m4c0-bgl-loop.hpp"
 
 #include <OpenGL/gl3.h>
 #include <GLUT/glut.h>

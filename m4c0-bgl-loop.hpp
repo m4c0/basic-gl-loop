@@ -15,8 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-#ifndef BASICGLLOOP_HPP
-#define BASICGLLOOP_HPP
+#ifndef M4C0BGLLOOP_HPP
+#define M4C0BGLLOOP_HPP
 
 namespace m4c0 {
     class main {
