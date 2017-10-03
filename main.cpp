@@ -40,6 +40,38 @@ m4c0::main::~main() {
 }
 
 void m4c0::main::start() {
+    std::cout << "========================= Starting " << _main->title() << " =========================" << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
+    std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Capabilities:" << std::endl;
+#define DUMP(x) { int i; glGetIntegerv(x, &i); std::cout << "    " #x " = " << i << std::endl; }
+    DUMP(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS);
+    DUMP(GL_MAX_CUBE_MAP_TEXTURE_SIZE);
+    DUMP(GL_MAX_DRAW_BUFFERS);
+    DUMP(GL_MAX_FRAGMENT_UNIFORM_COMPONENTS);
+    DUMP(GL_MAX_PATCH_VERTICES);
+    DUMP(GL_MAX_TEXTURE_IMAGE_UNITS);
+    DUMP(GL_MAX_TEXTURE_SIZE);
+    DUMP(GL_MAX_UNIFORM_BUFFER_BINDINGS);
+    DUMP(GL_MAX_VERTEX_ATTRIBS);
+    DUMP(GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS);
+    DUMP(GL_MAX_VERTEX_UNIFORM_COMPONENTS);
+    std::cout << std::endl;
+
+    std::cout << "Extensions: ";
+
+    int count;
+    glGetIntegerv(GL_NUM_EXTENSIONS, &count);
+    for (int i = 0; i < count; i++) {
+        if (i != 0) std::cout << ", ";
+        std::cout << glGetStringi(GL_EXTENSIONS, i);
+    }
+    std::cout << std::endl;
+    std::cout << std::endl;
 }
 void m4c0::main::reshape(int w, int h) {
     glViewport(0, 0, w, h);
@@ -92,39 +124,6 @@ int main(int argc, char ** argv) {
     glutDisplayFunc(_display);
     glutIdleFunc(_idle);
     glutReshapeFunc(_reshape);
-
-    std::cout << "========================= Starting " << _main->title() << " =========================" << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
-    std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "Capabilities:" << std::endl;
-#define DUMP(x) { int i; glGetIntegerv(x, &i); std::cout << "    " #x " = " << i << std::endl; }
-    DUMP(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS);
-    DUMP(GL_MAX_CUBE_MAP_TEXTURE_SIZE);
-    DUMP(GL_MAX_DRAW_BUFFERS);
-    DUMP(GL_MAX_FRAGMENT_UNIFORM_COMPONENTS);
-    DUMP(GL_MAX_PATCH_VERTICES);
-    DUMP(GL_MAX_TEXTURE_IMAGE_UNITS);
-    DUMP(GL_MAX_TEXTURE_SIZE);
-    DUMP(GL_MAX_UNIFORM_BUFFER_BINDINGS);
-    DUMP(GL_MAX_VERTEX_ATTRIBS);
-    DUMP(GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS);
-    DUMP(GL_MAX_VERTEX_UNIFORM_COMPONENTS);
-    std::cout << std::endl;
-
-    std::cout << "Extensions: ";
-
-    int count;
-    glGetIntegerv(GL_NUM_EXTENSIONS, &count);
-    for (int i = 0; i < count; i++) {
-        if (i != 0) std::cout << ", ";
-        std::cout << glGetStringi(GL_EXTENSIONS, i);
-    }
-    std::cout << std::endl;
-    std::cout << std::endl;
 
     _main->start();
 

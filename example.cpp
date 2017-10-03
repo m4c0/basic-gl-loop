@@ -31,6 +31,7 @@ public:
 
     void start() override {
         std::cout << "Started" << std::endl;
+        m4c0::main::start();
     }
     void reshape(int w, int h) override {
         std::cout << "Reshape " << w << "x" << h << std::endl;
