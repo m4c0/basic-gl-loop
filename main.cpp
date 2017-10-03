@@ -39,6 +39,8 @@ m4c0::main::~main() {
     _main = nullptr;
 }
 
+void m4c0::main::start() {
+}
 void m4c0::main::reshape(int w, int h) {
     glViewport(0, 0, w, h);
 }
@@ -123,6 +125,8 @@ int main(int argc, char ** argv) {
     }
     std::cout << std::endl;
     std::cout << std::endl;
+
+    _main->start();
 
     _last_fps_update = clk::now();
     glutMainLoop();

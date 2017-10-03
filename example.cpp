@@ -17,8 +17,32 @@
  */
 #include "m4c0-bgl-loop.hpp"
 
+#include <iostream>
+
+/// !brief Example class for the 'main loop provider'
+///
+/// This is a simple example of how to use this class. All overrides (except
+/// "title") are optional and used only as example. They are also nice to
+/// understand when those calls happens, and what happens if you don't call the
+/// parent class (which is also optional).
 static class _ : m4c0::main {
 public:
     const char * title() override { return "Hello World"; }
+
+    void start() override {
+        std::cout << "Started" << std::endl;
+    }
+    void reshape(int w, int h) override {
+        std::cout << "Reshape " << w << "x" << h << std::endl;
+        m4c0::main::reshape(w, h);
+    }
+    void frame() override {
+        std::cout << "Frame" << std::endl;
+        m4c0::main::frame();
+    }
+    void report_fps(float fps) override {
+        std::cout << "Current FPS was " << fps << std::endl;
+        m4c0::main::report_fps(fps);
+    }
 } _main;
 
