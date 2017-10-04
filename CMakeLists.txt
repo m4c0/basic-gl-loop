@@ -21,9 +21,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(EXPORT_NAME "${PROJECT_NAME}-config")
 
+find_package(opengl-headers REQUIRED)
+
 add_library(${PROJECT_NAME} STATIC main.cpp)
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${PROJECT_NAME}.hpp")
-target_link_libraries(${PROJECT_NAME} PUBLIC "-framework OpenGL")
+target_link_libraries(${PROJECT_NAME} PUBLIC opengl-headers)
 target_link_libraries(${PROJECT_NAME} PUBLIC "-framework GLUT")
 install(
     TARGETS ${PROJECT_NAME}

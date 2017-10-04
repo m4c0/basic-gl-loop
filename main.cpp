@@ -17,7 +17,7 @@
  */
 #include "m4c0-bgl-loop.hpp"
 
-#include <OpenGL/gl3.h>
+#include <GL/glcorearb.h>
 #include <GLUT/glut.h>
 
 #include <chrono>
